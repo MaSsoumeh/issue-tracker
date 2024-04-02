@@ -6,7 +6,7 @@ import {
   RHFTextEditor,
   RHFTextField,
 } from "@/app/components";
-import { postIssueSchema } from "@/app/validationSchemas";
+import { IssueSchema } from "@/app/validationSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
@@ -16,7 +16,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { z } from "zod";
 
-type IssueForm = z.infer<typeof postIssueSchema>;
+type IssueForm = z.infer<typeof IssueSchema>;
 
 const NewIssuePage = () => {
   const router = useRouter();
@@ -24,7 +24,7 @@ const NewIssuePage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { control, handleSubmit } = useForm<IssueForm>({
-    resolver: zodResolver(postIssueSchema),
+    resolver: zodResolver(IssueSchema),
   });
 
   const onSubmit: SubmitHandler<IssueForm> = async (data) => {
