@@ -50,3 +50,4 @@ const IssuePage = async () => {
 
 export default IssuePage;
 export const dynamic = "force-dynamic";
+// export const revalidate = 0;
