@@ -31,7 +31,10 @@ const IssueForm = ({issue}: { issue?: Issue | null }) => {
     const onSubmit: SubmitHandler<IssueForm> = async (data) => {
         try {
             setIsLoading(true);
-            await axios.post("/api/issues", data);
+            if (issue)
+                await axios.patch(`/api/issues/${issue.id}`,data)
+            else
+                await axios.post("/api/issues", data);
             router.push("/issues");
         } catch (error) {
             setError("an unexpected error occurred.");
@@ -59,7 +62,7 @@ const IssueForm = ({issue}: { issue?: Issue | null }) => {
                     isLoading={isLoading}
                     icon={IoCheckmarkSharp}
                 >
-                    Submit Issue
+                    {issue ? "Update Issue":"Submit New Issue"}
                 </Button>
             </form>
         </div>
