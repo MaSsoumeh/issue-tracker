@@ -1,16 +1,18 @@
-import { TextField as RadixTextField } from "@radix-ui/themes";
+import {TextField as RadixTextField,TextFieldInput} from "@radix-ui/themes";
 import ErrorMessage from "./ErrorMessage";
 import {
-  Control,
   Controller,
   FieldValues,
   UseControllerProps,
   useController,
 } from "react-hook-form";
 
-interface TextFieldProps<V extends FieldValues> {
-  controller: UseControllerProps<V>;
+
+
+interface TextFieldProps<V extends FieldValues>{
   placeholder?: string;
+  defaultValue?:string
+  controller: UseControllerProps<V>;
 }
 const RHFTextField = <V extends FieldValues>(props: TextFieldProps<V>) => {
   const { fieldState } = useController(props.controller);

@@ -1,4 +1,4 @@
-import { IssueSchema } from "@/app/validationSchemas";
+import { IssueSchema } from "app/issues/validationSchemas";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function PUT(
